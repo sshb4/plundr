@@ -232,6 +232,32 @@ html, body {
   justify-content: center;
 }
 
+.landing-inspiration {
+  margin-top: 1.8rem;
+  max-width: 340px;
+  border-left: 2px solid rgba(201,151,58,0.4);
+  padding: 0.5rem 1rem;
+  text-align: left;
+  opacity: 0.55;
+}
+.landing-inspiration p {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--parchment);
+  line-height: 1.5;
+  margin-bottom: 0.3rem;
+}
+.landing-inspiration footer {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  color: var(--gold-light);
+}
+.landing-inspiration a {
+  color: var(--gold-light);
+  text-decoration: none;
+}
+.landing-inspiration a:hover { text-decoration: underline; }
+
 /* ─── SWIPE SCREEN ─── */
 #swipe-screen {
   z-index: 10;
