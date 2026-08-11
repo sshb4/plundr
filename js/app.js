@@ -67,8 +67,8 @@
           ${profile.treasures.map(t => `<span class="treasure-tag">⚓ ${t}</span>`).join('')}
         </div>
       </div>
-      <div class="stamp stamp-starboard">ABOARD!</div>
-      <div class="stamp stamp-port">PORT!</div>
+      <div class="stamp stamp-starboard">LIKE!</div>
+      <div class="stamp stamp-port">NOPE!</div>
     `;
     return card;
   }
@@ -131,8 +131,8 @@
 
   // ─── Match modal ───
   function showMatchModal(profile) {
-    matchName.textContent = `Ye found yer first mate — ${profile.name}!`;
-    matchMsg.textContent = `${profile.name} has joined yer crew! The seas look brighter already, ye lucky scallywag.`;
+    matchName.textContent = `${profile.name} joined yer crew!`;
+    matchMsg.textContent = `The seas look brighter already, ye lucky scallywag.`;
     matchModal.classList.remove('hidden');
   }
 
