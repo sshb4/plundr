@@ -15,14 +15,18 @@ class SwipeDeck {
   }
 
   _bindEvents() {
-    this.card.addEventListener('mousedown', this._onStart.bind(this));
-    this.card.addEventListener('touchstart', this._onStart.bind(this), { passive: true });
+    this._boundOnStart = this._onStart.bind(this);
+    this._boundOnMove  = this._onMove.bind(this);
+    this._boundOnEnd   = this._onEnd.bind(this);
 
-    document.addEventListener('mousemove', this._onMove.bind(this));
-    document.addEventListener('touchmove', this._onMove.bind(this), { passive: false });
+    this.card.addEventListener('mousedown', this._boundOnStart);
+    this.card.addEventListener('touchstart', this._boundOnStart, { passive: true });
 
-    document.addEventListener('mouseup', this._onEnd.bind(this));
-    document.addEventListener('touchend', this._onEnd.bind(this));
+    document.addEventListener('mousemove', this._boundOnMove);
+    document.addEventListener('touchmove', this._boundOnMove, { passive: false });
+
+    document.addEventListener('mouseup', this._boundOnEnd);
+    document.addEventListener('touchend', this._boundOnEnd);
   }
 
   _getClientX(e) {
@@ -104,9 +108,9 @@ class SwipeDeck {
   }
 
   destroy() {
-    document.removeEventListener('mousemove', this._onMove.bind(this));
-    document.removeEventListener('touchmove', this._onMove.bind(this));
-    document.removeEventListener('mouseup', this._onEnd.bind(this));
-    document.removeEventListener('touchend', this._onEnd.bind(this));
+    document.removeEventListener('mousemove', this._boundOnMove);
+    document.removeEventListener('touchmove', this._boundOnMove);
+    document.removeEventListener('mouseup', this._boundOnEnd);
+    document.removeEventListener('touchend', this._boundOnEnd);
   }
 }

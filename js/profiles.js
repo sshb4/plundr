@@ -39,7 +39,7 @@ const PROFILES = [
     bio: "They say no ship that sails toward my light has ever returned… but wouldn't ye like to be the first?",
     treasures: ["Stargazing", "Luring Sailors", "Collecting Wreckage"],
     isSiren: true,
-    sirenReveal: "Shiver me timbers! Isadora is a siren! Ye ship has run aground on the rocks. Swim for yer life!"
+    sirenReveal: "Blimey! Ye ship has run aground on the rocks. Swim for yer life!"
   },
   {
     id: 5,
