@@ -19,6 +19,7 @@
   --pink-light: #ff5c8a;
   --green:      #1f7a45;
   --green-light:#28a05a;
+  --green-accent:#30d98e;
   --white:      #ffffff;
   --shadow:     rgba(0,0,0,0.6);
 }
@@ -481,8 +482,8 @@ html, body {
 
 .stamp-starboard {
   right: 20px;
-  color: #30d98e;
-  border-color: #30d98e;
+  color: var(--green-accent);
+  border-color: var(--green-accent);
   transform: rotate(15deg);
   text-shadow: 0 0 10px rgba(48,217,142,0.6);
 }
@@ -549,8 +550,8 @@ html, body {
 
 .btn-starboard .btn-swipe-icon {
   background: #1a1f2e;
-  border: 2px solid #30d98e;
-  color: #30d98e;
+  border: 2px solid var(--green-accent);
+  color: var(--green-accent);
   box-shadow: 0 6px 20px rgba(48,217,142,0.35);
 }
 
@@ -616,7 +617,7 @@ html, body {
 }
 
 .modal-box-match::before {
-  background: linear-gradient(90deg, #30d98e, #28a05a);
+  background: linear-gradient(90deg, var(--green-accent), #28a05a);
 }
 
 .modal-box-siren::before {
@@ -654,7 +655,7 @@ html, body {
   letter-spacing: 0.04em;
 }
 
-.modal-title-match { color: #30d98e; }
+.modal-title-match { color: var(--green-accent); }
 .modal-title-siren { color: var(--pink-light); }
 
 .modal-profile-name {
@@ -693,7 +694,7 @@ html, body {
 .btn-modal:active { transform: translateY(0); }
 
 .btn-modal-primary-match {
-  background: linear-gradient(135deg, #30d98e, #1f9a60);
+  background: linear-gradient(135deg, var(--green-accent), #1f9a60);
   color: var(--white);
   box-shadow: 0 6px 20px rgba(48,217,142,0.4);
 }
