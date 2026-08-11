@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Plundr — Find yer treasure. Beware the sirens. A pirate dating demo." />
+  <title>Plundr ⚓ — Find Yer Treasure</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>" />
+</head>
+<body>
+
+  <!-- ─── Ocean background (always visible) ─── -->
+  <div class="ocean-bg" aria-hidden="true">
+    <div class="stars"></div>
+    <div class="moon"></div>
+    <div class="ship">⛵</div>
+    <div class="wave-container">
+      <div class="wave wave-1"></div>
+      <div class="wave wave-2"></div>
+      <div class="wave wave-3"></div>
+    </div>
+  </div>
+
+  <!-- ─── Landing Screen ─── -->
+  <main id="landing-screen" class="screen" role="main">
+    <span class="landing-anchor" aria-hidden="true">⚓</span>
+    <h1 class="landing-logo">Plundr</h1>
+    <p class="landing-tagline">Find yer treasure. Beware the sirens.</p>
+    <button class="btn-set-sail" id="btn-set-sail" aria-label="Start swiping">
+      ⚓ Set Sail
+    </button>
+    <div class="landing-skull" aria-hidden="true">
+      <span>☠️</span><span>🗺️</span><span>☠️</span>
+    </div>
+  </main>
+
+  <!-- ─── Swipe Screen ─── -->
+  <section id="swipe-screen" class="screen hidden" aria-label="Swipe deck">
+    <div class="swipe-header">
+      <span class="header-logo">⚓ Plundr</span>
+      <button class="crew-counter" id="crew-btn" aria-label="View ship's log">
+        🏴‍☠️ Crew: <strong id="crew-count">0</strong>
+      </button>
+    </div>
+
+    <div class="card-deck" id="card-deck" role="region" aria-label="Profile cards"></div>
+
+    <div class="swipe-buttons" role="group" aria-label="Swipe actions">
+      <button class="btn-swipe btn-port" id="btn-port" aria-label="Port — pass on this sailor">
+        <div class="btn-swipe-icon">✖</div>
+        <span class="btn-swipe-label">Port</span>
+      </button>
+      <button class="btn-swipe btn-starboard" id="btn-starboard" aria-label="Starboard — invite this sailor aboard">
+        <div class="btn-swipe-icon">⚓</div>
+        <span class="btn-swipe-label">Starboard</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ─── Match Modal ─── -->
+  <div id="match-modal" class="modal-overlay modal-bg-match hidden" role="dialog" aria-modal="true" aria-labelledby="match-modal-title">
+    <div class="modal-box modal-box-match">
+      <span class="modal-icon" aria-hidden="true">⚓</span>
+      <h2 class="modal-title modal-title-match" id="match-modal-title">Ahoy, a Match!</h2>
+      <p class="modal-profile-name" id="match-modal-name"></p>
+      <p class="modal-message" id="match-modal-msg"></p>
+      <button class="btn-modal btn-modal-primary-match" id="btn-match-log">
+        📜 View Ship's Log
+      </button>
+      <button class="btn-modal btn-modal-secondary" id="btn-match-continue">
+        Keep Sailin' &rarr;
+      </button>
+    </div>
+  </div>
+
+  <!-- ─── Siren Modal ─── -->
+  <div id="siren-modal" class="modal-overlay modal-bg-siren hidden" role="dialog" aria-modal="true" aria-labelledby="siren-modal-title">
+    <div class="modal-box modal-box-siren">
+      <span class="modal-icon" aria-hidden="true">🧜‍♀️</span>
+      <h2 class="modal-title modal-title-siren" id="siren-modal-title">Ye've Been Lured!</h2>
+      <p class="modal-profile-name" id="siren-modal-name"></p>
+      <p class="modal-message" id="siren-modal-msg"></p>
+      <button class="btn-modal btn-modal-primary-siren" id="btn-siren-log">
+        📜 Inspect the Damage
+      </button>
+      <button class="btn-modal btn-modal-secondary" id="btn-siren-continue">
+        Sail On &rarr;
+      </button>
+    </div>
+  </div>
+
+  <!-- ─── Ship's Log Screen ─── -->
+  <section id="log-screen" class="screen hidden" aria-label="Ship's log — matched crew">
+    <div class="log-header">
+      <span class="log-title">📜 Ship's Log</span>
+      <button class="btn-back" id="btn-back-from-log">← Back to Deck</button>
+    </div>
+    <div class="log-list" id="log-list" role="list"></div>
+  </section>
+
+  <!-- ─── Empty State Screen ─── -->
+  <section id="empty-screen" class="screen hidden" aria-label="End of deck">
+    <span class="empty-icon" aria-hidden="true">⛵</span>
+    <h2 class="empty-title">Seas Be Empty!</h2>
+    <p class="empty-text">
+      Ye've sailed through all the souls on these waters,<br>
+      ye weathered old sea dog.
+    </p>
+    <p class="empty-sub">
+      Matched with <strong id="empty-match-count">0</strong> sailors,
+      of which <strong id="empty-siren-count">0</strong>
+      were sirens trying to plunder <em>ye!</em>
+    </p>
+    <button class="btn-restart" id="btn-restart">
+      🌊 Cast Off Again
+    </button>
+    <button class="btn-modal btn-modal-secondary" id="btn-view-log" style="margin-top:0.8rem;max-width:220px">
+      📜 View Ship's Log
+    </button>
+  </section>
+
+  <!-- ─── Keyboard hint ─── -->
+  <p class="keyboard-hint" aria-hidden="true">← Port &nbsp;·&nbsp; Starboard →</p>
+
+  <!-- ─── Scripts ─── -->
+  <script src="js/profiles.js"></script>
+  <script src="js/swipe.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
