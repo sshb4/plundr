@@ -9,6 +9,7 @@ class SwipeDeck {
     this.startY = 0;
     this.currentX = 0;
     this.isDragging = false;
+    this.isAnimating = false;
     this.THRESHOLD = 80;
 
     this._bindEvents();
@@ -96,6 +97,8 @@ class SwipeDeck {
   }
 
   _flyOff(direction) {
+    if (this.isAnimating) return;
+    this.isAnimating = true;
     this.card.style.transform = '';
     this.card.classList.add(direction === 'right' ? 'fly-right' : 'fly-left');
     setTimeout(() => {
@@ -104,6 +107,7 @@ class SwipeDeck {
   }
 
   triggerSwipe(direction) {
+    if (this.isAnimating) return;
     this._flyOff(direction === 'starboard' ? 'right' : 'left');
   }
 
